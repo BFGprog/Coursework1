@@ -14,7 +14,7 @@ public class EmployeeBook {
     public void addEmployee(String name, int department, int wage) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
-                id = i;
+                id = 0;
                 Employee employee = new Employee(name, department, wage, id);
                 employees[i] = employee;
                 size++;
