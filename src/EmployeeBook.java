@@ -2,8 +2,6 @@ import java.util.Arrays;
 
 public class EmployeeBook {
     private Employee[] employees;
-    static int size;
-    private int id;
 
 
     public EmployeeBook() {
@@ -14,10 +12,8 @@ public class EmployeeBook {
     public void addEmployee(String name, int department, int wage) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
-                id = 0;
-                Employee employee = new Employee(name, department, wage, id);
+                Employee employee = new Employee(name, department, wage);
                 employees[i] = employee;
-                size++;
                 return;
             }
         }
@@ -29,7 +25,6 @@ public class EmployeeBook {
             if (employees[i].getName().equals(name)) {
                 System.out.println(employees[i].getName() + " delete");
                 employees[i] = null;
-                size--;
                 return;
             }
         }
@@ -41,7 +36,6 @@ public class EmployeeBook {
             if (employees[i].getId() == emp) {
                 System.out.println(employees[i].getName() + "delete");
                 employees[i] = null;
-                size--;
                 return;
             }
         }
@@ -63,9 +57,7 @@ public class EmployeeBook {
             System.out.println(employees[i].toString());
         }
     }
-    public int getEmployeeSize() {
-        return size;
-    }
+
 
     public String isWageMin() {
         int wageMin = employees[0].getWage();
@@ -109,7 +101,13 @@ public class EmployeeBook {
 
     public int isWageMedium() {
         int medium = 0;
-        medium = isWageMonth() / size;
+        int count = 0;
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getName().length() > 0) {
+                count++;
+            }
+        }
+        medium = isWageMonth() / count;
         return medium;
     }
     // Dcnfdrf
